@@ -1,6 +1,18 @@
 from tkinter import *
 from tkinter import ttk
 
+# main Class
+class user:
+    def __init__(self, master):
+        # Window
+        self.master = master
+        # Some useful variables
+        self.username = StringVar()
+        self.password = StringVar()
+        self.n_username = StringVar()
+        self.n_password = StringVar()
+        
+
 if __name__ == '__main__':
     root = Tk()
 
@@ -11,5 +23,5 @@ if __name__ == '__main__':
 
     root.geometry("500x300+320+200")
     root.title('Login Form')
-  
+    application = user(root)
     root.mainloop()
