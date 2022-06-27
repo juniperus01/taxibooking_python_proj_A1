@@ -36,7 +36,27 @@ class user:
         Button(self.logf, text=' Login ', bd=3, font=('', 15), padx=5, pady=5, command=self.login).grid()
         Button(self.logf, text=' Create Account ', bd=3, font=('', 15), padx=5, pady=5, command=self.cr).grid(row=2,
                
+     # Login Function
+    def login(self):
+        # Establish Connection
+        with sqlite3.connect('Users.db') as db:
+            c = db.cursor()
 
+        # Find user If there is any take proper action
+        find_user = ('SELECT * FROM user WHERE username = ? and password = ?')
+        c.execute(find_user, [(self.username.get()), (self.password.get())])
+        result = c.fetchall()
+        if result:
+            self.logf.pack_forget()
+            self.head['text'] = "Welcome, " + self.username.get()
+            self.head.configure(fg="green")
+            self.head.pack(fill=X)
+            application = travel(root)
+
+        else:
+            ms.showerror('Oops!', 'Username Not Found.')
+                                                                                                              
+                                                                                                              
 if __name__ == '__main__':
     root = Tk()
 
