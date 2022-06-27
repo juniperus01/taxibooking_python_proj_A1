@@ -1,6 +1,16 @@
 from tkinter import *
 from tkinter import ttk
+import sqlite3
 
+Item4 = 0
+
+# make database and users (if not exists already) table at programme start up
+with sqlite3.connect('Users.db') as db:
+    c = db.cursor()
+
+c.execute('CREATE TABLE IF NOT EXISTS user (username TEXT NOT NULL ,password TEXT NOT NULL)')
+db.commit()
+db.close()
 # main Class
 class user:
     def __init__(self, master):
