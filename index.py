@@ -55,7 +55,21 @@ class user:
 
         else:
             ms.showerror('Oops!', 'Username Not Found.')
-                                                                                                              
+        
+class travel:
+
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Taxi Booking System In LPU")
+        self.root.geometry(geometry)
+        self.root.configure(background='black')
+
+        DateofOrder = StringVar()
+        DateofOrder.set(time.strftime(" %d / %m / %Y "))
+        Receipt_Ref = StringVar()
+        PaidTax = StringVar()
+        SubTotal = StringVar()
+        TotalCost = StringVar()                                                                                                    
                                                                                                               
 if __name__ == '__main__':
     root = Tk()
