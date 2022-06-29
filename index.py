@@ -69,7 +69,18 @@ class travel:
         Receipt_Ref = StringVar()
         PaidTax = StringVar()
         SubTotal = StringVar()
-        TotalCost = StringVar()                                                                                                    
+        TotalCost = StringVar()
+                                                                                                              
+        var1 = IntVar()
+        var2 = IntVar()
+        var3 = IntVar()
+        var4 = IntVar()
+        journeyType = IntVar()
+        carType = IntVar()
+
+        varl1 = StringVar()
+        varl2 = StringVar()
+        varl3 = StringVar()
                                                                                                               
 if __name__ == '__main__':
     root = Tk()
