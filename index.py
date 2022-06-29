@@ -82,6 +82,20 @@ class travel:
         varl2 = StringVar()
         varl3 = StringVar()
                                                                                                               
+        Firstname = StringVar()
+        Surname = StringVar()
+        Address = StringVar()
+        Postcode = StringVar()
+        Mobile = StringVar()
+        Telephone = StringVar()
+        Email = StringVar()
+
+        TaxiTax = StringVar()
+        Km = StringVar()
+        Travel_Ins = StringVar()
+        Luggage = StringVar()
+        Receipt = StringVar()
+                                                                                                              
 if __name__ == '__main__':
     root = Tk()
 
