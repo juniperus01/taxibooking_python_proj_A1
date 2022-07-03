@@ -108,3 +108,57 @@ if __name__ == '__main__':
     root.title('Login Form')
     application = user(root)
     root.mainloop()
+    -----------------------------------------------------------------------------------------
+    self.root.title("Taxi Booking System In LPU")
+        self.root.geometry(geometry) 
+        self.root.configure(background='black')
+
+        DateofOrder=StringVar()
+        DateofOrder.set(time.strftime(" %d / %m / %Y "))
+        Receipt_Ref=StringVar()
+        PaidTax=StringVar()
+        SubTotal=StringVar()
+        TotalCost=StringVar()
+
+        var1=IntVar()
+        var2=IntVar()
+        var3=IntVar()
+        var4=IntVar()
+        journeyType=IntVar()
+        carType=IntVar()
+        
+        varl1=StringVar()
+        varl2=StringVar()
+        varl3=StringVar()
+        reset_counter=0
+
+
+        Firstname=StringVar()
+        Surname=StringVar()
+        Address=StringVar()
+        Postcode=StringVar()
+        Mobile=StringVar()
+        Telephone=StringVar()
+        Email=StringVar()
+
+        TaxiTax=StringVar()
+        Km=StringVar()
+        Travel_Ins=StringVar()
+        Luggage=StringVar()
+        Receipt=StringVar()
+
+
+        Standard=StringVar()
+        PrimeSedan=StringVar()
+        PremiumSedan=StringVar()
+
+
+        TaxiTax.set("0")
+        Km.set("0")
+        Travel_Ins.set("0")
+        Luggage.set("0")
+
+
+        Standard.set("0")
+        PrimeSedan.set("0")
+        PremiumSedan.set("0")                                                                                                          
