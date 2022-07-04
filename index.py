@@ -80,9 +80,9 @@ class travel:
 
         varl1 = StringVar()
         varl2 = StringVar()
-        varl3 = StringVar()
-                                                                                                              
+        varl3 = StringVar()                                                                                                                        
         Firstname = StringVar()
+                                                                                                              
         Surname = StringVar()
         Address = StringVar()
         Postcode = StringVar()
@@ -162,3 +162,20 @@ if __name__ == '__main__':
         Standard.set("0")
         PrimeSedan.set("0")
         PremiumSedan.set("0")                                                                                                          
+        ---------------------------------------------------------#Defining Functions------------------------------ 
+        #defining Reset
+         def iExit():
+            iExit= ms.askyesno("Prompt!","Do you want to exit?")
+            if iExit > 0:
+                root.destroy()
+                return
+
+        def Reset():
+            TaxiTax.set("0")
+            Km.set("0")
+            Travel_Ins.set("0")
+            Luggage.set("0")
+
+            Standard.set("0")
+            PrimeSedan.set("0")
+            PremiumSedan.set("0")                                                                                                              
