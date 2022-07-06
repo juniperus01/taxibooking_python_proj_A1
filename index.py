@@ -351,7 +351,7 @@ class travel:
             global Item4
             if (var4.get()==1):
                 self.txtLuggage.configure(state = NORMAL)
-                Item4=float(30)
+                Item4=float(10)
                 Luggage.set("Rs "+ str(Item4))
             elif var4.get()== 0:
                 self.txtLuggage.configure(state = DISABLED)
@@ -367,7 +367,7 @@ class travel:
                 self.txtPremiumSedan.configure(state = DISABLED)
                 PremiumSedan.set("0")
                 self.txtStandard.configure(state = NORMAL)
-                Item5 = float(8)
+                Item5 = float(4)
                 Standard.set("Rs "+ str(Item5))
             elif carType.get() == 2:
                 self.txtStandard.configure(state =DISABLED)
@@ -375,7 +375,7 @@ class travel:
                 self.txtPremiumSedan.configure(state = DISABLED)
                 PremiumSedan.set("0")
                 self.txtPrimeSedan.configure(state = NORMAL)
-                Item5 = float(10)
+                Item5 = float(8)
                 PrimeSedan.set("Rs "+ str(Item5))
             else:
                 self.txtStandard.configure(state =DISABLED)
@@ -383,7 +383,7 @@ class travel:
                 self.txtPrimeSedan.configure(state = DISABLED)
                 PrimeSedan.set("0")
                 self.txtPremiumSedan.configure(state = NORMAL)
-                Item5 = float(15)
+                Item5 = float(12)
                 PremiumSedan.set("Rs "+ str(Item5))
                 
                        
