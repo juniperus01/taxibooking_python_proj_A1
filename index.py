@@ -95,18 +95,18 @@ class user:
 
         self.logf = Frame(self.master,padx =40,pady = 40, bg="black")
         Label(self.logf,text = 'Username:',font = ('',20),pady=5,padx=5,fg="white",bg="black").grid(sticky = W)
-        Entry(self.logf,textvariable = self.username,bd = 3,font = ('',15),bg="black",fg="white",insertbackground='red').grid(row=0,column=1)
+        Entry(self.logf,textvariable = self.username,bd = 3,font = ('',15),bg="black",fg="white",insertbackground='red',cursor='pencil').grid(row=0,column=1)
         Label(self.logf,text = 'Password:',font = ('',20),pady=5,padx=10,bg="black",fg="white").grid(sticky = W)
-        Entry(self.logf,textvariable = self.password,bd = 3,font = ('',15),show = '*',fg="white",bg="black",insertbackground='red').grid(row=1,column=1)
+        Entry(self.logf,textvariable = self.password,bd = 3,font = ('',15),show = '*',fg="white",bg="black",insertbackground='red',cursor='pencil').grid(row=1,column=1)
         Button(self.logf,text = ' Login ', bd = 1,font = ('',15),padx=2,pady=2,command=self.login, bg="white",fg="black",relief="ridge").grid()
         Button(self.logf,text = ' Create Account ',bd = 1, font = ('',15),padx=2,pady=2,fg="black", bg="white",relief="ridge",command=self.cr,borderwidth=1).grid(row=2,column=1)
         self.logf.pack()
         
         self.crf = Frame(self.master,padx =25,pady =40, bg="black")
         Label(self.crf,text = 'Username: ',font = ('',20),pady=5,padx=5,fg="white",bg="black").grid(sticky = W)
-        Entry(self.crf,textvariable = self.n_username,bd = 3,font = ('',15),bg="black",fg="white",insertbackground='red').grid(row=0,column=1)
+        Entry(self.crf,textvariable = self.n_username,bd = 3,font = ('',15),bg="black",fg="white",insertbackground='red',cursor='pencil').grid(row=0,column=1)
         Label(self.crf,text = 'Password: ',font = ('',20),pady=10,padx=10, fg="white",bg="black").grid(sticky = W)
-        Entry(self.crf,textvariable = self.n_password,bd = 3,font = ('',15),show = '*',fg="white",bg="black",insertbackground='red').grid(row=1,column=1)
+        Entry(self.crf,textvariable = self.n_password,bd = 3,font = ('',15),show = '*',fg="white",bg="black",insertbackground='red',cursor='pencil').grid(row=1,column=1)
         Button(self.crf,text = 'Create Account',bd = 1 ,font = ('',15),padx=5,pady=2, bg="white",fg="black",relief="ridge", command=self.new_user).grid()
         Button(self.crf,text = 'Go to Login',bd = 1 ,font = ('',15),padx=5,pady=5,command=self.log, bg="white",fg="black",relief="ridge",borderwidth=1).grid(row=2,column=1)
 
