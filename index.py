@@ -109,7 +109,7 @@ class user:
         Entry(self.crf,textvariable = self.n_password,bd = 3,font = ('',15),show = '*',fg="white",bg="black").grid(row=1,column=1)
         Button(self.crf,text = 'Create Account',bd = 1 ,font = ('',15),padx=5,pady=2, bg="white",fg="black",relief="ridge", command=self.new_user).grid()
         Button(self.crf,text = 'Go to Login',bd = 1 ,font = ('',15),padx=5,pady=5,command=self.log, bg="white",fg="black",relief="ridge",borderwidth=1).grid(row=2,column=1)
-    Label.bind('<Return>',login()) # adding binding to login and password input box
+
 class travel:
 
     def __init__(self,root):
@@ -121,7 +121,7 @@ class travel:
         self.root.title("Taxi Booking System In KJSCE ")
 
         
-        self.root.geometry("1920x1080+0+0")
+        self.root.geometry(geometry)
         self.root.configure(background='yellow')
 
         DateofOrder=StringVar()
@@ -307,16 +307,25 @@ class travel:
             elif var2.get() == 1 and varl1.get() != "" and varl2.get() != "":
                 self.txtKm.configure(state=NORMAL)
                 if varl1.get() == "Canteen":
-                    switch = {"BoysHostel": 10,"GirlsHostel": 8,"Aryabhatta Building":6,"Canteen": 0}
+                    switch = {"BoysHostel": 10,"GirlsHostel": 8,"Aryabhatta Building":6,"Canteen": 0, "Gate No. 1 (Vidhyavihar)": 4,"Gate No. 2 (Ghatkopar)": 2, "Gate No. 3 (Tilak Nagar)": 1 }
                     Km.set(switch[varl2.get()])
                 elif varl1.get() == "BoysHostel":
-                    switch ={"BoysHostel": 0,"GirlsHostel": 2,"Aryabhatta Building":5,"Canteen": 10}
+                    switch ={"BoysHostel": 0,"GirlsHostel": 2,"Aryabhatta Building":5,"Canteen": 10, "Gate No. 1 (Vidhyavihar)": 5,"Gate No. 2 (Ghatkopar)": 2, "Gate No. 3 (Tilak Nagar)": 0.5}
                     Km.set(switch[varl2.get()])
                 elif varl1.get() == "GirlsHostel":
-                    switch ={"BoysHostel": 2,"GirlsHostel": 0,"Aryabhatta Building":3,"Canteen": 8}
+                    switch ={"BoysHostel": 2,"GirlsHostel": 0,"Aryabhatta Building":3,"Canteen": 8, "Gate No. 1 (Vidhyavihar)": 5,"Gate No. 2 (Ghatkopar)": 2, "Gate No. 3 (Tilak Nagar)": 0.5}
                     Km.set(switch[varl2.get()])
                 elif varl1.get() == "Aryabhatta Building":
-                    switch ={"BoysHostel": 5,"GirlsHostel": 3,"Aryabhatta Building":0,"Canteen": 6}
+                    switch ={"BoysHostel": 5,"GirlsHostel": 3,"Aryabhatta Building":0,"Canteen": 6, "Gate No. 1 (Vidhyavihar)": 2,"Gate No. 2 (Ghatkopar)": 1, "Gate No. 3 (Tilak Nagar)": 1}
+                    Km.set(switch[varl2.get()]) 
+                elif varl1.get() == "Gate No. 1 (Vidhyavihar)":
+                    switch ={"BoysHostel": 2,"GirlsHostel": 2,"Aryabhatta Building":4,"Canteen": 5, "Gate No. 1 (Vidhyavihar)": 0,"Gate No. 2 (Ghatkopar)": 4, "Gate No. 3 (Tilak Nagar)": 3}
+                    Km.set(switch[varl2.get()]) 
+                elif varl1.get() == "Gate No. 2 (Ghatkopar)":
+                    switch ={"BoysHostel": 2,"GirlsHostel": 3,"Aryabhatta Building":5,"Canteen": 5, "Gate No. 1 (Vidhyavihar)": 3,"Gate No. 2 (Ghatkopar)": 0, "Gate No. 3 (Tilak Nagar)": 4}
+                    Km.set(switch[varl2.get()]) 
+                elif varl1.get() == "Gate No. 3 (Tilak Nagar)":
+                    switch ={"BoysHostel": 3,"GirlsHostel": 3,"Aryabhatta Building":3,"Canteen": 5, "Gate No. 1 (Vidhyavihar)": 4,"Gate No. 2 (Ghatkopar)": 4, "Gate No. 3 (Tilak Nagar)": 0}
                     Km.set(switch[varl2.get()])        
 
         
@@ -375,21 +384,21 @@ class travel:
         def Total_Paid():
             if ((var1.get() == 1 and var2.get() == 1 and var3.get() == 1 or var4.get() == 1) and carType.get() != 0 and journeyType.get() != 0 and (varl1.get() != "" and varl2.get() !="")):
                 if journeyType.get()==1:
-                    Item2=Km.get()
+                    Item2=float(Km.get())
                     Cost_of_fare = (Item1+(float(Item2)*Item5)+Item3+Item4)
 
                     Tax = "Rs " + str('%.2f'%((Cost_of_fare) *0.09))
                     ST = "Rs " + str('%.2f'%((Cost_of_fare)))
                     TT = "Rs " + str('%.2f'%(Cost_of_fare+((Cost_of_fare)*0.9)))
                 elif journeyType.get()==2:
-                    Item2=Km.get()
+                    Item2=float(Km.get())
                     Cost_of_fare = (Item1+(float(Item2)*Item5)*1.5+Item3+Item4)
 
                     Tax = "Rs " + str('%.2f'%((Cost_of_fare) *0.09))
                     ST = "Rs " + str('%.2f'%((Cost_of_fare)))
                     TT = "Rs " + str('%.2f'%(Cost_of_fare+((Cost_of_fare)*0.9)))
                 else:
-                    Item2=Km.get()
+                    Item2=float(Km.get())
                     Cost_of_fare = (Item1+(float(Item2)*Item5)*2+Item3+Item4)
 
                     Tax = "Rs " + str('%.2f'%((Cost_of_fare) *0.09))
@@ -474,11 +483,14 @@ class travel:
         self.lblTelephone.grid(row=4,column=0,sticky=W)
         self.txtTelephone=Entry(CustomerName,font=('arial',14,'bold'),textvariable=Telephone,bd=7,insertwidth=2,justify=RIGHT)
         self.txtTelephone.grid(row=4,column=1)
+       # self.txtTelephone.insert("(022)")
+        
 
         self.lblMobile=Label(CustomerName,font=('arial',14,'bold'),text="Mobile",bd=7)
         self.lblMobile.grid(row=5,column=0,sticky=W)
         self.txtMobile=Entry(CustomerName,font=('arial',14,'bold'),textvariable=Mobile,bd=7,insertwidth=2,justify=RIGHT)
         self.txtMobile.grid(row=5,column=1)
+       # self.txtMobile.insert("(+91)")
 
         self.lblEmail=Label(CustomerName,font=('arial',14,'bold'),text="Email",bd=7)
         self.lblEmail.grid(row=6,column=0,sticky=W)
@@ -490,8 +502,8 @@ class travel:
         self.lblPickup=Label(TravelFrame,font=('arial',14,'bold'),text="Pickup",bd=7)
         self.lblPickup.grid(row=0,column=0,sticky=W)
 
-        self.cboPickup =ttk.Combobox(TravelFrame, textvariable = varl1 , state='readonly', font=('arial',20,'bold'), width=14)
-        self.cboPickup['value']=('','Canteen','Aryabhatta Building','BoysHostel','GirlsHostel')
+        self.cboPickup =ttk.Combobox(TravelFrame, textvariable = varl1 , state='readonly', font=('arial',15,'bold'), width=14)
+        self.cboPickup['value']=('','Canteen','Aryabhatta Building','BoysHostel','GirlsHostel', "Gate No. 1 (Vidhyavihar)","Gate No. 2 (Ghatkopar)", "Gate No. 3 (Tilak Nagar)")
         self.cboPickup.current(0)
         self.cboPickup.grid(row=0,column=1)
 
@@ -499,16 +511,16 @@ class travel:
         self.lblDrop=Label(TravelFrame,font=('arial',14,'bold'),text="Drop",bd=7)
         self.lblDrop.grid(row=1,column=0,sticky=W)
 
-        self.cboDrop =ttk.Combobox(TravelFrame, textvariable = varl2 , state='readonly', font=('arial',20,'bold'), width=14)
-        self.cboDrop['value']=('','BoysHostel','GirlsHostel','Canteen','Aryabhatta Building')
+        self.cboDrop =ttk.Combobox(TravelFrame, textvariable = varl2 , state='readonly', font=('arial',15,'bold'), width=14)
+        self.cboDrop['value']=('','Canteen','Aryabhatta Building','BoysHostel','GirlsHostel', "Gate No. 1 (Vidhyavihar)","Gate No. 2 (Ghatkopar)", "Gate No. 3 (Tilak Nagar)")
         self.cboDrop.current(0)
         self.cboDrop.grid(row=1,column=1)
 
         self.lblPooling=Label(TravelFrame,font=('arial',14,'bold'),text="Pooling",bd=7)
         self.lblPooling.grid(row=2,column=0,sticky=W)
 
-        self.cboPooling =ttk.Combobox(TravelFrame, textvariable = varl3 , state='readonly', font=('arial',20,'bold'), width=14)
-        self.cboPooling['value']=('','1','2','3','4')
+        self.cboPooling =ttk.Combobox(TravelFrame, textvariable = varl3 , state='readonly', font=('arial',15,'bold'), width=14)
+        self.cboPooling['value']=('0','1','2','3','4')
         self.cboPooling.current(0)
         self.cboPooling.grid(row=2,column=1)
 
