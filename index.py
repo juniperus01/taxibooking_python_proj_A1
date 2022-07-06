@@ -302,7 +302,7 @@ class travel:
             global Item1
             if var1.get() == 1:
                 self.txtTaxiTax.configure(state = NORMAL)
-                Item1=float(50)
+                Item1=float(5)
                 TaxiTax.set("Rs " + str(Item1))
             elif var1.get() == 0:
                 self.txtTaxiTax.configure(state=DISABLED)
