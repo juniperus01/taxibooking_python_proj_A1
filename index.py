@@ -619,7 +619,6 @@ if __name__=='__main__':
    
     
     root.title('Login Form')
-    root.resizable(False,False)
     # application = user(root)
     root.mainloop()
     
