@@ -1,5 +1,3 @@
-from curses import color_content
-from msilib.schema import Font
 from sys import builtin_module_names
 from tkinter import *
 from tkinter import ttk
@@ -8,12 +6,6 @@ import time
 import datetime
 from tkinter import messagebox as ms
 import sqlite3
-from tkinter import font
-from tkinter.tix import COLUMN
-from turtle import bgcolor, color, width
-
-
-Item4 = 0 # Variable for luggage value
 
 
 # make database and users (if not exists already) table at programme start up
@@ -23,6 +15,8 @@ with sqlite3.connect('Users.db') as db:
 c.execute('CREATE TABLE IF NOT EXISTS user (username TEXT NOT NULL ,password TEXT NOT NULL)')
 db.commit()
 db.close()
+
+Item4 = 0 # Variable for luggage value
 
 #main Class
 class user:
@@ -34,17 +28,17 @@ class user:
         self.password = StringVar()
         self.n_username = StringVar()
         self.n_password = StringVar()
-        #Create Widgets
-        # self.bg=PhotoImage(file="by.png")
+       
         self.widgets()
-        # bg = PhotoImage(file = "by.png")
-    #Login_Function:-
+        
+    #Login_Function
     def login(self):
+
     	#Establish Connection
         with sqlite3.connect('Users.db') as db:
             c = db.cursor()
 
-        #Find user If there is any take proper action
+        #Find user If there is any...take proper action
         find_user = ('SELECT * FROM user WHERE username = ? and password = ?')
         c.execute(find_user,[(self.username.get()),(self.password.get())])
         result = c.fetchall()
@@ -53,10 +47,6 @@ class user:
             self.head['text'] = "Welcome  " + self.username.get()
             self.head.configure(fg="YELLOW",font=('Verdana',40))
             self.head.pack(fill=X)
-            
-            
-            
-            
             application = travel(root)
             
         else:
@@ -99,26 +89,26 @@ class user:
     def widgets(self):
         
    
-        self.head = Label(self.master,text = 'Login',font = ('',35),pady = 5,bg="black",fg="white",width=15)
+        self.head = Label(self.master,text = 'Login',font = ('',35),pady = 5,bg="black",fg="white",width=50)
 
         self.head.pack()
 
-        self.logf = Frame(self.master,padx =10,pady = 10, bg="black")
-        Label(self.logf,text = 'Username:',font = ('',20),pady=5,padx=10,fg="white",bg="black").grid(sticky = W)
+        self.logf = Frame(self.master,padx =40,pady = 40, bg="black")
+        Label(self.logf,text = 'Username:',font = ('',20),pady=5,padx=5,fg="white",bg="black").grid(sticky = W)
         Entry(self.logf,textvariable = self.username,bd = 3,font = ('',15),bg="black",fg="white").grid(row=0,column=1)
         Label(self.logf,text = 'Password:',font = ('',20),pady=5,padx=10,bg="black",fg="white").grid(sticky = W)
         Entry(self.logf,textvariable = self.password,bd = 3,font = ('',15),show = '*',fg="white",bg="black").grid(row=1,column=1)
-        Button(self.logf,text = ' Login ',bd = 3 ,font = ('',15),padx=5,pady=5,command=self.login,fg="white",bg="black",relief=SUNKEN).grid()
-        Button(self.logf,text = ' Create Account ',bd = 3 ,font = ('',15),padx=5,pady=5,bg="black",fg="white",relief=SUNKEN,command=self.cr,borderwidth=5).grid(row=2,column=1)
+        Button(self.logf,text = ' Login ', bd = 1,font = ('',15),padx=2,pady=2,command=self.login, bg="white",fg="black",relief="ridge").grid()
+        Button(self.logf,text = ' Create Account ',bd = 1, font = ('',15),padx=2,pady=2,fg="black", bg="white",relief="ridge",command=self.cr,borderwidth=1).grid(row=2,column=1)
         self.logf.pack()
         
-        self.crf = Frame(self.master,padx =10,pady = 10)
-        Label(self.crf,text = 'Username: ',font = ('',20),pady=5,padx=5).grid(sticky = W)
-        Entry(self.crf,textvariable = self.n_username,bd = 5,font = ('',15)).grid(row=0,column=1)
-        Label(self.crf,text = 'Password: ',font = ('',20),pady=5,padx=5).grid(sticky = W)
-        Entry(self.crf,textvariable = self.n_password,bd = 5,font = ('',15),show = '*').grid(row=1,column=1)
-        Button(self.crf,text = 'Create Account',bd = 3 ,font = ('',15),padx=5,pady=5,command=self.new_user).grid()
-        Button(self.crf,text = 'Go to Login',bd = 3 ,font = ('',15),padx=5,pady=5,command=self.log).grid(row=2,column=1)
+        self.crf = Frame(self.master,padx =25,pady =40, bg="black")
+        Label(self.crf,text = 'Username: ',font = ('',20),pady=5,padx=5,fg="white",bg="black").grid(sticky = W)
+        Entry(self.crf,textvariable = self.n_username,bd = 3,font = ('',15),bg="black",fg="white").grid(row=0,column=1)
+        Label(self.crf,text = 'Password: ',font = ('',20),pady=10,padx=10, fg="white",bg="black").grid(sticky = W)
+        Entry(self.crf,textvariable = self.n_password,bd = 3,font = ('',15),show = '*',fg="white",bg="black").grid(row=1,column=1)
+        Button(self.crf,text = 'Create Account',bd = 1 ,font = ('',15),padx=5,pady=2, bg="white",fg="black",relief="ridge", command=self.new_user).grid()
+        Button(self.crf,text = 'Go to Login',bd = 1 ,font = ('',15),padx=5,pady=5,command=self.log, bg="white",fg="black",relief="ridge",borderwidth=1).grid(row=2,column=1)
 
 class travel:
 
@@ -302,7 +292,7 @@ class travel:
             global Item1
             if var1.get() == 1:
                 self.txtTaxiTax.configure(state = NORMAL)
-                Item1=float(5)
+                Item1=float(3)
                 TaxiTax.set("Rs " + str(Item1))
             elif var1.get() == 0:
                 self.txtTaxiTax.configure(state=DISABLED)
@@ -316,23 +306,18 @@ class travel:
                 Km.set("0")
             elif var2.get() == 1 and varl1.get() != "" and varl2.get() != "":
                 self.txtKm.configure(state=NORMAL)
-                if varl1.get() == "CampusCafe":
-                    switch ={"BoysHostel": 10,"GirlsHostel": 8,"AdmissionBlock":6,"CampusCafe": 0}
+                if varl1.get() == "Canteen":
+                    switch = {"BoysHostel": 10,"GirlsHostel": 8,"Aryabhatta Building":6,"Canteen": 0}
                     Km.set(switch[varl2.get()])
                 elif varl1.get() == "BoysHostel":
-                    switch ={"BoysHostel": 0,"GirlsHostel": 2,"AdmissionBlock":5,"CampusCafe": 10}
+                    switch ={"BoysHostel": 0,"GirlsHostel": 2,"Aryabhatta Building":5,"Canteen": 10}
                     Km.set(switch[varl2.get()])
                 elif varl1.get() == "GirlsHostel":
-                    switch ={"BoysHostel": 2,"GirlsHostel": 0,"AdmissionBlock":3,"CampusCafe": 8}
+                    switch ={"BoysHostel": 2,"GirlsHostel": 0,"Aryabhatta Building":3,"Canteen": 8}
                     Km.set(switch[varl2.get()])
-                elif varl1.get() == "AdmissionBlock":
-                    switch ={"BoysHostel": 5,"GirlsHostel": 3,"AdmissionBlock":0,"CampusCafe": 6}
+                elif varl1.get() == "Aryabhatta Building":
+                    switch ={"BoysHostel": 5,"GirlsHostel": 3,"Aryabhatta Building":0,"Canteen": 6}
                     Km.set(switch[varl2.get()])        
-
-
-
-
-
 
         
         def Travelling():
@@ -346,7 +331,7 @@ class travel:
                 Travel_Ins.set("0")
                 Item3=0
 
-        
+       
         def Lug():
             global Item4
             if (var4.get()==1):
@@ -437,10 +422,10 @@ class travel:
         FrameDetails=Frame(CustomerDetailsFrame, width=880,height=400,bd=10, relief=RIDGE)
         FrameDetails.pack(side=LEFT,fill=BOTH,expand=True)
 
-        CustomerName=LabelFrame(FrameDetails, width=150,height=250,bd=10, font=('arial',12,'bold'),text="Customer Name", relief=RIDGE)
+        CustomerName=LabelFrame(FrameDetails, width=150,height=250,bd=10, font=('arial',12,'bold'),text="Student Details", relief=RIDGE)
         CustomerName.grid(row=0,column=0)
 
-        TravelFrame = LabelFrame(FrameDetails,bd=10, width=300,height=250, font=('arial',12,'bold'),text="Booking Detail", relief=RIDGE)
+        TravelFrame = LabelFrame(FrameDetails,bd=10, width=300,height=250, font=('arial',12,'bold'),text="Booking Details", relief=RIDGE)
         TravelFrame.grid(row=0,column=1)
 
         Book_Frame=LabelFrame(FrameDetails,width=300,height=150,relief=FLAT)
@@ -506,7 +491,7 @@ class travel:
         self.lblPickup.grid(row=0,column=0,sticky=W)
 
         self.cboPickup =ttk.Combobox(TravelFrame, textvariable = varl1 , state='readonly', font=('arial',20,'bold'), width=14)
-        self.cboPickup['value']=('','CampusCafe','AdmissionBlock','BoysHostel','GirlsHostel')
+        self.cboPickup['value']=('','Canteen','Aryabhatta Building','BoysHostel','GirlsHostel')
         self.cboPickup.current(0)
         self.cboPickup.grid(row=0,column=1)
 
@@ -515,7 +500,7 @@ class travel:
         self.lblDrop.grid(row=1,column=0,sticky=W)
 
         self.cboDrop =ttk.Combobox(TravelFrame, textvariable = varl2 , state='readonly', font=('arial',20,'bold'), width=14)
-        self.cboDrop['value']=('','BoysHostel','GirlsHostel','CampusCafe','AdmissionBlock')
+        self.cboDrop['value']=('','BoysHostel','GirlsHostel','Canteen','Aryabhatta Building')
         self.cboDrop.current(0)
         self.cboDrop.grid(row=1,column=1)
 
