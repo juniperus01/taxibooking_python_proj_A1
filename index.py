@@ -606,7 +606,7 @@ class travel:
         
 if __name__=='__main__':
     root = Tk()
-    application = user(root)
+#     application = user(root)
 
 
     #=========================================== Getting Screen Width ==================================================================
@@ -614,11 +614,12 @@ if __name__=='__main__':
     h = root.winfo_screenheight()
     geometry="%dx%d+%d+%d"%(w,h,0,0)
     
-    root.geometry("400x235+520+100")
+    root.geometry("402x238+520+100")
    
    
     
     root.title('Login Form')
-    # application = user(root)
+    root.resizable(False,False)
+    application = user(root)
     root.mainloop()
     
