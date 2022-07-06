@@ -13,7 +13,7 @@ from tkinter.tix import COLUMN
 from turtle import bgcolor, color, width
 
 
-# Item4 = 0
+Item4 = 0 # Variable for luggage value
 
 
 # make database and users (if not exists already) table at programme start up
