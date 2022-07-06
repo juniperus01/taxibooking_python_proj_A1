@@ -109,7 +109,7 @@ class user:
         Entry(self.crf,textvariable = self.n_password,bd = 3,font = ('',15),show = '*',fg="white",bg="black").grid(row=1,column=1)
         Button(self.crf,text = 'Create Account',bd = 1 ,font = ('',15),padx=5,pady=2, bg="white",fg="black",relief="ridge", command=self.new_user).grid()
         Button(self.crf,text = 'Go to Login',bd = 1 ,font = ('',15),padx=5,pady=5,command=self.log, bg="white",fg="black",relief="ridge",borderwidth=1).grid(row=2,column=1)
-
+    Label.bind('<Return>',login()) # adding binding to login and password input box
 class travel:
 
     def __init__(self,root):
