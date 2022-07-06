@@ -618,12 +618,7 @@ if __name__=='__main__':
     geometry="%dx%d+%d+%d"%(w,h,0,0)
     
     root.geometry("400x235+520+100")
-    # bg = PhotoImage(file = "by.png")
-    # canvas1 = Canvas( root, width = 542,
-    #              height = 571)
-    # canvas1.pack(fill = "both", expand = True)
-    # canvas1.create_image( 0, 0, image = bg, 
-    #                  anchor = "nw")
+   
    
     
     root.title('Login Form')
