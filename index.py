@@ -125,9 +125,10 @@ class travel:
     def __init__(self,root):
         self.root = root
 
-        # Setting icon of master window
-        self.root.iconphoto(False, p)
-        self.roo.title("Taxi Booking System In KJSCE ")
+        ## Setting icon of master window
+        p1 = PhotoImage(file = "img2.png")
+        self.root.iconphoto(False, p1)
+        self.root.title("Taxi Booking System In KJSCE ")
 
         
         self.root.geometry("1920x1080+0+0")
