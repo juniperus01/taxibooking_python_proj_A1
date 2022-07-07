@@ -1,9 +1,8 @@
-from sys import builtin_module_names
+
 from tkinter import *
 from tkinter import ttk
 import random
 import time
-import datetime
 from tkinter import messagebox as ms
 import sqlite3
 
@@ -15,8 +14,6 @@ with sqlite3.connect('Users.db') as db:
 c.execute('CREATE TABLE IF NOT EXISTS user (username TEXT NOT NULL ,password TEXT NOT NULL)')
 db.commit()
 db.close()
-
-Item4 = 0 # Variable for luggage value
 
 #main Class
 class user:
@@ -70,13 +67,14 @@ class user:
         c.execute(insert,[(self.n_username.get()),(self.n_password.get())])
         db.commit()
 
-        #Frame Packing Methords
+    #Frame Packing Methods
     def log(self):
         self.username.set('')
         self.password.set('')
         self.crf.pack_forget()
         self.head['text'] = 'Login'
         self.logf.pack()
+
     def cr(self):
         self.n_username.set('')
         self.n_password.set('')
@@ -95,18 +93,18 @@ class user:
 
         self.logf = Frame(self.master,padx =40,pady = 40, bg="black")
         Label(self.logf,text = 'Username:',font = ('',20),pady=5,padx=5,fg="white",bg="black").grid(sticky = W)
-        Entry(self.logf,textvariable = self.username,bd = 3,font = ('',15),bg="black",fg="white",insertbackground='red',cursor='pencil').grid(row=0,column=1)
+        Entry(self.logf,textvariable = self.username,bd = 3,font = ('',15),bg="black",fg="white").grid(row=0,column=1)
         Label(self.logf,text = 'Password:',font = ('',20),pady=5,padx=10,bg="black",fg="white").grid(sticky = W)
-        Entry(self.logf,textvariable = self.password,bd = 3,font = ('',15),show = '*',fg="white",bg="black",insertbackground='red',cursor='pencil').grid(row=1,column=1)
+        Entry(self.logf,textvariable = self.password,bd = 3,font = ('',15),show = '*',fg="white",bg="black").grid(row=1,column=1)
         Button(self.logf,text = ' Login ', bd = 1,font = ('',15),padx=2,pady=2,command=self.login, bg="white",fg="black",relief="ridge").grid()
         Button(self.logf,text = ' Create Account ',bd = 1, font = ('',15),padx=2,pady=2,fg="black", bg="white",relief="ridge",command=self.cr,borderwidth=1).grid(row=2,column=1)
         self.logf.pack()
         
         self.crf = Frame(self.master,padx =25,pady =40, bg="black")
         Label(self.crf,text = 'Username: ',font = ('',20),pady=5,padx=5,fg="white",bg="black").grid(sticky = W)
-        Entry(self.crf,textvariable = self.n_username,bd = 3,font = ('',15),bg="black",fg="white",insertbackground='red',cursor='pencil').grid(row=0,column=1)
+        Entry(self.crf,textvariable = self.n_username,bd = 3,font = ('',15),bg="black",fg="white").grid(row=0,column=1)
         Label(self.crf,text = 'Password: ',font = ('',20),pady=10,padx=10, fg="white",bg="black").grid(sticky = W)
-        Entry(self.crf,textvariable = self.n_password,bd = 3,font = ('',15),show = '*',fg="white",bg="black",insertbackground='red',cursor='pencil').grid(row=1,column=1)
+        Entry(self.crf,textvariable = self.n_password,bd = 3,font = ('',15),show = '*',fg="white",bg="black").grid(row=1,column=1)
         Button(self.crf,text = 'Create Account',bd = 1 ,font = ('',15),padx=5,pady=2, bg="white",fg="black",relief="ridge", command=self.new_user).grid()
         Button(self.crf,text = 'Go to Login',bd = 1 ,font = ('',15),padx=5,pady=5,command=self.log, bg="white",fg="black",relief="ridge",borderwidth=1).grid(row=2,column=1)
 
@@ -119,14 +117,13 @@ class travel:
         p1 = PhotoImage(file = "img2.png")
         self.root.iconphoto(False, p1)
         self.root.title("Taxi Booking System In KJSCE ")
-
-        
         self.root.geometry(geometry)
-        self.root.configure(background='yellow')
-
+        
         DateofOrder=StringVar()
         DateofOrder.set(time.strftime(" %d / %m / %Y "))
-        
+
+##################################################### DECLARATION OF VARIABLES AND DATATYPES #########################################################################  
+     
         Receipt_Ref=StringVar()
         PaidTax=StringVar()
         SubTotal=StringVar()
@@ -174,9 +171,6 @@ class travel:
         Standard.set("0")
         PrimeSedan.set("0")
         PremiumSedan.set("0")
-
-       
-        
 
     
     #==========================================Define Functiom==================================================
@@ -235,7 +229,7 @@ class travel:
             self.txtPremiumSedan.configure(state=DISABLED)
             self.reset_counter=1
 
-        def Receiptt():
+        def receipt():
             if reset_counter == 0 and Firstname.get()!="" and Surname.get()!="" and Address.get()!="" and Postcode.get()!="" and Mobile.get()!="" and Telephone.get()!="" and Email.get()!="":
                 self.txtReceipt1.delete("1.0",END)
                 self.txtReceipt2.delete("1.0",END)
@@ -292,7 +286,7 @@ class travel:
             global Item1
             if var1.get() == 1:
                 self.txtTaxiTax.configure(state = NORMAL)
-                Item1=float(3)
+                Item1=float(2)
                 TaxiTax.set("Rs " + str(Item1))
             elif var1.get() == 0:
                 self.txtTaxiTax.configure(state=DISABLED)
@@ -333,7 +327,7 @@ class travel:
             global Item3
             if var3.get() == 1:
                 self.txtTravel_Ins.configure(state = NORMAL)
-                Item3=float(10)
+                Item3=float(4)
                 Travel_Ins.set("Rs " + str(Item3))
             elif var3.get() == 0:
                 self.txtTravel_Ins.configure(state = DISABLED)
@@ -361,7 +355,7 @@ class travel:
                 self.txtPremiumSedan.configure(state = DISABLED)
                 PremiumSedan.set("0")
                 self.txtStandard.configure(state = NORMAL)
-                Item5 = float(4)
+                Item5 = float(0)
                 Standard.set("Rs "+ str(Item5))
             elif carType.get() == 2:
                 self.txtStandard.configure(state =DISABLED)
@@ -369,7 +363,7 @@ class travel:
                 self.txtPremiumSedan.configure(state = DISABLED)
                 PremiumSedan.set("0")
                 self.txtPrimeSedan.configure(state = NORMAL)
-                Item5 = float(8)
+                Item5 = float(4)
                 PrimeSedan.set("Rs "+ str(Item5))
             else:
                 self.txtStandard.configure(state =DISABLED)
@@ -377,33 +371,18 @@ class travel:
                 self.txtPrimeSedan.configure(state = DISABLED)
                 PrimeSedan.set("0")
                 self.txtPremiumSedan.configure(state = NORMAL)
-                Item5 = float(12)
+                Item5 = float(8)
                 PremiumSedan.set("Rs "+ str(Item5))
                 
                        
         def Total_Paid():
             if ((var1.get() == 1 and var2.get() == 1 and var3.get() == 1 or var4.get() == 1) and carType.get() != 0 and journeyType.get() != 0 and (varl1.get() != "" and varl2.get() !="")):
-                if journeyType.get()==1:
-                    Item2=float(Km.get())
-                    Cost_of_fare = (Item1+(float(Item2)*Item5)+Item3+Item4)
+                Item2=float(Km.get())
+                Cost_of_fare = (Item1 + (Item2 * Item5) + Item3 + Item4)
 
-                    Tax = "Rs " + str('%.2f'%((Cost_of_fare) *0.09))
-                    ST = "Rs " + str('%.2f'%((Cost_of_fare)))
-                    TT = "Rs " + str('%.2f'%(Cost_of_fare+((Cost_of_fare)*0.9)))
-                elif journeyType.get()==2:
-                    Item2=float(Km.get())
-                    Cost_of_fare = (Item1+(float(Item2)*Item5)*1.5+Item3+Item4)
-
-                    Tax = "Rs " + str('%.2f'%((Cost_of_fare) *0.09))
-                    ST = "Rs " + str('%.2f'%((Cost_of_fare)))
-                    TT = "Rs " + str('%.2f'%(Cost_of_fare+((Cost_of_fare)*0.9)))
-                else:
-                    Item2=float(Km.get())
-                    Cost_of_fare = (Item1+(float(Item2)*Item5)*2+Item3+Item4)
-
-                    Tax = "Rs " + str('%.2f'%((Cost_of_fare) *0.09))
-                    ST = "Rs " + str('%.2f'%((Cost_of_fare)))
-                    TT = "Rs " + str('%.2f'%(Cost_of_fare+((Cost_of_fare)*0.9)))
+                Tax = "Rs " + str('%.2f'%((Cost_of_fare) *0.09))
+                ST = "Rs " + str('%.2f'%((Cost_of_fare)))
+                TT = "Rs " + str('%.2f'%(Cost_of_fare+((Cost_of_fare)*0.9)))
 
                 PaidTax.set(Tax)
                 SubTotal.set(ST)
@@ -483,14 +462,14 @@ class travel:
         self.lblTelephone.grid(row=4,column=0,sticky=W)
         self.txtTelephone=Entry(CustomerName,font=('arial',14,'bold'),textvariable=Telephone,bd=7,insertwidth=2,justify=RIGHT)
         self.txtTelephone.grid(row=4,column=1)
-       # self.txtTelephone.insert("(022)")
+      
         
 
         self.lblMobile=Label(CustomerName,font=('arial',14,'bold'),text="Mobile",bd=7)
         self.lblMobile.grid(row=5,column=0,sticky=W)
         self.txtMobile=Entry(CustomerName,font=('arial',14,'bold'),textvariable=Mobile,bd=7,insertwidth=2,justify=RIGHT)
         self.txtMobile.grid(row=5,column=1)
-       # self.txtMobile.insert("(+91)")
+  
 
         self.lblEmail=Label(CustomerName,font=('arial',14,'bold'),text="Email",bd=7)
         self.lblEmail.grid(row=6,column=0,sticky=W)
@@ -498,7 +477,7 @@ class travel:
         self.txtEmail.grid(row=6,column=1)
 
  
-    #===============================================Taxi Information==============================================================
+    #===============================================Destination Information==============================================================
         self.lblPickup=Label(TravelFrame,font=('arial',14,'bold'),text="Pickup",bd=7)
         self.lblPickup.grid(row=0,column=0,sticky=W)
 
@@ -586,7 +565,7 @@ class travel:
         self.chkSpecialsNeeds =Radiobutton(Book_Frame,text="SpecialNeeds",value=3,variable = journeyType,font=('arial',14,'bold')).grid(row=2, column=2, sticky=W)
     
     
-    #=======================================Recipt====================================================================================
+    #=======================================Receipt====================================================================================
 
         self.txtReceipt1 = Text(ReceiptFrame,width = 22, height = 21,font=('arial',10,'bold'),borderwidth=0)
         self.txtReceipt1.grid(row=0,column=0,columnspan=2)
@@ -597,7 +576,7 @@ class travel:
     #======================================Button========================================================================================
         
         self.btnTotal = Button(ButtonFrame,padx=18,bd=7,font=('arial',11,'bold'),width = 2,text='Total',command=Total_Paid).grid(row=0,column=0)
-        self.btnReceipt = Button(ButtonFrame,padx=18,bd=7,font=('arial',11,'bold'),width = 2,text='Receipt',command=Receiptt).grid(row=0,column=1)
+        self.btnReceipt = Button(ButtonFrame,padx=18,bd=7,font=('arial',11,'bold'),width = 2,text='Receipt',command=receipt).grid(row=0,column=1)
         self.btnReset = Button(ButtonFrame,padx=18,bd=7,font=('arial',11,'bold'),width = 2,text='Reset',command=Reset).grid(row=0,column=2)
         self.btnExit = Button(ButtonFrame,padx=18,bd=7,font=('arial',11,'bold'),width = 2,text='Exit', command=iExit).grid(row=0,column=3)
         
@@ -606,7 +585,7 @@ class travel:
         
 if __name__=='__main__':
     root = Tk()
-#     application = user(root)
+    application = user(root)
 
 
     #=========================================== Getting Screen Width ==================================================================
@@ -614,12 +593,7 @@ if __name__=='__main__':
     h = root.winfo_screenheight()
     geometry="%dx%d+%d+%d"%(w,h,0,0)
     
-    root.geometry("402x238+520+100")
-   
-   
+    root.geometry("400x235+520+100")
     
     root.title('Login Form')
-    root.resizable(False,False)
-    application = user(root)
     root.mainloop()
-    
