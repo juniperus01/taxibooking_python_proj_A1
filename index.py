@@ -242,7 +242,7 @@ class travel:
                 self.txtReceipt1.insert(END,'Date:\n')
                 self.txtReceipt2.insert(END, DateofOrder.get() + "\n")
                 self.txtReceipt1.insert(END,'Taxi No:\n')
-                self.txtReceipt2.insert(END, 'TR ' + Receipt_Ref.get() + " BW\n")
+                self.txtReceipt2.insert(END, 'MH ' + 'BW '+ Receipt_Ref.get() + "\n")
                 self.txtReceipt1.insert(END,'Firstname:\n')
                 self.txtReceipt2.insert(END, Firstname.get() + "\n")
                 self.txtReceipt1.insert(END,'Surname:\n')
